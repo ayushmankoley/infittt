@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10131a" />
+    <title>Infinite Tic Tac Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Infinite Tic Tac Toe home">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>INFINITE<span class="brand-accent">/</span>TTT</span>
+        </a>
+        <div class="topbar-status"><span class="status-dot"></span> LIVE ARENA <span class="mono" id="round-label">ROUND 01</span></div>
+        <button class="text-button" id="reset-button" type="button">Reset arena <span aria-hidden="true">↗</span></button>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">TACTICAL GRID / NO CEILING</p>
+          <h1>Classic rules.<br /><em>Unpredictable</em> energy.</h1>
+          <p class="hero-copy">Start with three in a row, then survive an ever-expanding board. Every few turns, the arena glitches in your favor — or your rival's.</p>
+        </div>
+        <div class="hero-note">
+          <span class="note-line"></span>
+          <p><strong>HOW TO PLAY</strong><br />Place an X. Survive the chaos.<br />Connect the current target to win.</p>
+        </div>
+      </section>
+
+      <section class="game-layout" aria-label="Game area">
+        <aside class="side-panel left-panel">
+          <div class="panel-label">PLAYERS</div>
+          <div class="player-card active" id="human-card">
+            <div class="avatar x-avatar">X</div>
+            <div><strong>YOU</strong><span class="player-meta">THE DISRUPTOR</span></div>
+            <span class="turn-chip" id="human-turn">YOUR TURN</span>
+          </div>
+          <div class="player-card" id="bot-card">
+            <div class="avatar o-avatar">O</div>
+            <div><strong>ORACLE</strong><span class="player-meta">PROBABILITY ENGINE</span></div>
+            <span class="turn-chip" id="bot-turn">THINKING</span>
+          </div>
+          <div class="score-row">
+            <span>SCOREBOARD</span>
+            <strong><span id="human-score">0</span><small> : </small><span id="bot-score">0</span></strong>
+          </div>
+          <div class="powerup-panel">
+            <div class="panel-label">YOUR POWERUPS</div>
+            <div class="powerup-list" id="powerup-list">
+              <button class="powerup-button" type="button" data-powerup="erase" disabled>
+                <span class="powerup-icon">⌁</span><span><strong>VOID</strong><small>Erase an O</small></span><b>0</b>
+              </button>
+              <button class="powerup-button" type="button" data-powerup="extend" disabled>
+                <span class="powerup-icon">+</span><span><strong>ECHO</strong><small>Extend an X</small></span><b>0</b>
+              </button>
+              <button class="powerup-button" type="button" data-powerup="shield" disabled>
+                <span class="powerup-icon">◇</span><span><strong>SHIELD</strong><small>Protect your X</small></span><b>0</b>
+              </button>
+            </div>
+            <p class="powerup-hint" id="powerup-hint">Earn one when the arena intervenes.</p>
+          </div>
+        </aside>
+
+        <div class="board-wrap">
+          <div class="board-caption"><span id="board-size">03 × 03 FIELD</span><span class="mono" id="move-count">MOVE 00</span></div>
+          <div class="board-frame">
+            <div class="board" id="board" role="grid" aria-label="Infinite tic tac toe board"></div>
+            <div class="scanline" aria-hidden="true"></div>
+          </div>
+          <div class="board-footer"><span><kbd>CLICK</kbd> to place</span><span id="win-rule">3 CONNECTED = WIN</span></div>
+        </div>
+
+        <aside class="side-panel right-panel">
+          <div class="panel-label">ARENA FEED</div>
+          <div class="event-feed" id="event-feed" aria-live="polite"></div>
+          <div class="next-event">
+            <span class="panel-label">NEXT INTERVENTION</span>
+            <div class="countdown"><span id="event-count">04</span><small> MOVES</small></div>
+            <p id="event-hint">The timeline is stable. For now.</p>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="footer"><span>INFINITE ARENA <span class="muted">/</span> BUILD 26.10</span><span class="footer-tip">Luck is a strategy if you commit to it.</span></footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="assertive"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
